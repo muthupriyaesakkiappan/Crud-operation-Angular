@@ -1,0 +1,57 @@
+     <div class="container mt-4" >
+        <div class="container py-5 fs-5" *ngIf="isViewDetails">
+              <h1 class="fw-bold fs-1">Recipe Details</h1>
+              <button class="fs-5 fw-bold text-light bg-primary p-1 px-2 float-end  border-1 rounded-3" (click)="addNewRecipes()" >Add New Recipe</button>
+              <br><br>
+            <div class="container-fluid">
+                <div class="row">
+                      <img src="https://i0.wp.com/thekitchensstory.in/wp-content/uploads/2022/08/Royal-Biriyani-2.jpg?fit=1080%2C1080&ssl=1" height="500px"width="500px" >
+                   <ng-container *ngFor="let RecipeItem of Recipes let sno=index">
+                      <div class="card col-md-4">
+                         <em><h1 class="text-center">{{RecipeItem.recipe_name}}</h1></em>
+                          <hr>
+                          <h5>Ingredients</h5>
+                          <p>{{RecipeItem.ingredients }}</p>
+                          <h5>instructions</h5>
+                          <p>{{RecipeItem.instructions }}</p>
+                          <h4>Action</h4>
+                        <div class="d-flex ml-5">
+                          <i class="fa fa-eye fs-3 text-info" aria-hidden="true" (click)="setView(RecipeItem)"></i>
+                          <i class="fa fa-pencil fs-3 text-warning" aria-hidden="true" (click)="setUpdate(RecipeItem)"></i>
+                          <i class="fa fa-trash text-danger mr-5 fs0-3" aria-hidden="true" (click)="setDelete(RecipeItem)"></i>
+                         </div>
+                      </div>
+                    </ng-container>
+                </div>
+           </div>
+        </div> 
+        
+
+    <div  class="container-fluid shadow-lg pt-3 mb-5 bg-white rounded col-lg-6 mt-3 fs-4 pb-5 d-flex justify-content-center" *ngIf="isUpdateFormActive">
+        <form className="g-3" >
+            <div>
+               <h2 class="p-2" *ngIf="isAddCustomerLoaded">New Recipe : <span class="text-primary"> Add Details</span></h2><br/>
+               <h2 class="p-2" *ngIf="isViewFormLoaded">Our Recipe:<span class="text-primary"> View Details</span></h2><br/>
+              <h2 class="p-2" *ngIf="isEditFormLoaded">Our Recipe:<span class="text-primary"> Edit Details</span></h2><br/>
+            </div>
+              <div className="col-md-6 ">
+                  <label>Recipe Name</label>
+                  <input type="text" [(ngModel)]="recipe_name" [ngModelOptions]="{standalone: true}" class="form-control fs-5" id="name" placeholder="Enter Name">
+              </div>
+              <div className="col-md-6">
+                <label>Ingredient</label>
+                <input type="text" [(ngModel)]=" ingredients" [ngModelOptions]="{standalone: true}" class="form-control fs-5" id="ingredients" placeholder="Enter  Ingredients">
+              </div>
+              <div className="col-md-6">
+                <label>Instruction</label>
+                <input type="text" [(ngModel)]=" instructions" [ngModelOptions]="{standalone: true}" class="form-control fs-5" id="instructions" placeholder="Enter  Instructions">
+              </div>
+              <div className="col-12">
+                  <button class="rounded-3 fw-bold text-light bg-primary mt-5" (click)="save()" *ngIf="isAddCustomerLoaded">Add Recipes</button>
+                  <button class="rounded-3 fw-bold text-light bg-primary mt-5" (click)="save()" *ngIf="isEditFormLoaded">Save</button>
+                  <button class="rounded-3 fw-bold text-light bg-secondary mt-5 float-end" (click)="home()"> RecipesTable</button>
+              </div>
+            </form>
+          </div> 
+     
+          

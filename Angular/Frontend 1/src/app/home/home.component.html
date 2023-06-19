@@ -1,0 +1,31 @@
+<header>
+    <div class="navbar navbar-dark bg-primary shadow-sm">
+      <div class="navbar-brand align-item-center d-flex">
+          <i style="font-size: 40px;" class="fas fa-shipping-fast">&nbsp;</i>
+          <em><strong style="font-size: 30px ;" class="menu">Food Recipe</strong></em>
+              <div class="search-employees">
+                <input class="form-control search" type="text" placeholder="Search" [(ngModel)]="searchText">
+            </div>
+      </div>
+    </div>
+</header>
+<div class="container mt-4 " >
+  <div class="container " *ngIf="isViewDetails">
+    <h1 class="fw-bold fs-1">Recipes</h1>
+      <br><br>
+    </div>
+</div>
+
+<div class="container-fluid text-center  justify-content-center  aligin-item-center ml-5">
+  <div class="row ">
+    <ng-container *ngFor="let e of RecipesDetails | search: searchText">
+      <div class="card1 col-lg-2 m-1 ">
+        <img src="{{e.image }}" alt="" class="img1">
+         <a class="nav-link active recipe text-center" routerLink="/crudoperation" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><h3>
+           {{e.name }}</h3>
+         </a>
+         </div>
+     </ng-container>
+  </div>
+</div>
+

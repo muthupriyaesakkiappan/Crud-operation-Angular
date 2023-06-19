@@ -1,0 +1,19 @@
+.card1{
+    width: 400px;
+   border: 1px solid #ccc;
+   margin-right: 10px; 
+   margin:10px;
+  
+ }
+ .img1{
+     height: 300px;
+     width: 350px;
+ }
+ .receipe{
+  text-align: center;
+  
+ }
+ .search{
+  margin-left: 450px;
+  border-radius: 1rem;
+ }
